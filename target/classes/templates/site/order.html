@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Order Products</h1>
+    
+    <form action="#" th:action="@{/submitOrder}" method="post">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}"></td>
+                <td><input type="number" th:name="'quantity-' + ${product.productId}" min="0" value="0"></td>
+                <td th:text="${product.unitPrice}"></td>
+            </tr>
+        </table>
+        
+        <button type="submit">Submit Order</button>
+    </form>
+</body>
+</html>
